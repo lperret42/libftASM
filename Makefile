@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/30 12:40:40 by lperret           #+#    #+#              #
-#    Updated: 2018/04/30 12:47:48 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/01 12:31:15 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,23 +28,24 @@ SRC = ft_bzero.s
 
 OBJ = $(addprefix $(OBJ_PATH),$(SRC:.s=.o))
 
-all: $(NAME) | silent
+all: $(NAME) test | silent
 
 silent:
 	@:
 
 $(NAME): obj $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "\033[32mLinking & indexing" [ $(NAME) ] "\033[0m"
 
 obj:
 	@mkdir $(OBJ_PATH)
 
-$(OBJ_PATH)%.o:$(SRC_PATH)%.c $(INCLUDES_PATH)
-	@$(CC) $(FLAGS) -I$(INCLUDES_PATH) $(LIBFT_H) -o $@ -c $<
+$(OBJ_PATH)%.o:$(SRC_PATH)%.s $(INCLUDES_PATH)
+	@$(AS) $(ASFLAGS) -o $@ -s $<
 	@echo "\033[33mCompiling" [ $< ] "\033[0m"
 
-clean:
+clean: clean_test
 	@rm -rf $(OBJ_PATH)
 	@echo "\033[0;31mCleaning object files" [ $(NAME) ] "\033[0m"
 
@@ -54,33 +55,10 @@ fclean: clean
 
 re: fclean all
 
-test: $(OBJ) main.c
-	$(CC) main.c $(LIBS) -o $(NAME_TEST)
+test: $(OBJ) main.c | silent
+	@$(CC) -I$(INCLUDES_PATH) main.c $(LIBS) -o $(NAME_TEST)
+	@echo "\033[32mLinking & indexing" [ $(NAME_TEST) ] "\033[0m"
 
 clean_test:
-	/bin/rm -f $(NAME_TEST)
-
-ALL_SRC =	ft_bzero.s \
-		ft_isalpha.s \
-		ft_isdigit.s \
-		ft_isalnum.s \
-		ft_isascii.s \
-		ft_isprint.s \
-		ft_toupper.s \
-		ft_tolower.s \
-		ft_puts.s \
-		ft_strlen.s \
-		ft_strcat.s \
-		ft_memset.s \
-		ft_memcpy.s \
-		ft_strdup.s \
-		ft_cat.s \
-		ft_strcmp.s \
-		ft_putchar.s \
-		ft_putchar_fd.s \
-		ft_memcmp.s \
-		ft_strequ.s \
-		ft_strcpy.s \
-		ft_memdel.s \
-		ft_memalloc.s \
-		ft_strnew.s
+	@/bin/rm -f $(NAME_TEST)
+	@echo "\033[0;31mDelete" [ $(NAME_TEST) ]  "\033[0m"
