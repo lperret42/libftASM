@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/30 12:40:40 by lperret           #+#    #+#              #
-#    Updated: 2018/05/01 12:31:15 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/03 16:11:06 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_PATH = ./src/
 INCLUDES_PATH = ./includes/
 OBJ_PATH = ./obj/
 
-SRC = ft_bzero.s
+SRC = ft_bzero.s ft_strcat.s
 
 OBJ = $(addprefix $(OBJ_PATH),$(SRC:.s=.o))
 

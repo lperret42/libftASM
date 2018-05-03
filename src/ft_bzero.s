@@ -11,7 +11,6 @@ _ft_bzero:
 bzero_loop:
 	cmp rax, 0
 	jle end
-	; looping
 	mov byte[rbx], 0
 	inc rbx
 	dec rax
