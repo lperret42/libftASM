@@ -184,14 +184,17 @@ void	test_tolower(void)
 void	test_strlen(void)
 {
 	char	str[6] = "hello";
+	char	str2[22] = "hello all 42 students";
 
 	printf("************************ test_strlen ************************\n\n");
-	printf("%s: %ld\n", str, strlen(str));
+	printf("%s: %ld\n", str, ft_strlen(str));
+	printf("%s: %ld\n", str2, ft_strlen(str2));
 	printf("**************************************************************\n");
 }
 
 int		main()
 {
+	int		n = 3;
 	test_bzero();
 	test_strcat();
 	test_isalpha();
@@ -202,5 +205,6 @@ int		main()
 	test_toupper();
 	test_tolower();
 	test_strlen();
+	printf("n: %d", n);
 	return (0);
 }

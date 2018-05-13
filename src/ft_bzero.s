@@ -1,13 +1,17 @@
+section .text
 global _ft_bzero
 
-section .text
-
 _ft_bzero:
-	cmp rsi, 0
+	push rsi
+	push rdi
+loop:
+	cmp sil, 0
 	jle end
 	dec rsi
 	mov byte[rdi + rsi], 0
-	jmp _ft_bzero
+	jmp loop
 
 end:
+	pop rdi
+	pop rsi
 	ret
