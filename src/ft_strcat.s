@@ -1,34 +1,29 @@
 global _ft_strcat
 
 section .text
+
 _ft_strcat:
-	xor rcx, rcx
-	test rdi, rdi
-	jz done
-	test rsi, rsi
-	jz done
+	mov rax, rdi
 
 s1:
-	mov al, byte[rdi + rcx]
-	test al, al
-	jz s2
-	inc rcx
-	jmp s1
+	xor r9, r9
+s1_loop:
+	cmp byte[rdi + r9], 0
+	je cat
+	inc r9
+	jmp s1_loop
 
-s2:
-	xor r10, r10
 cat:
-	mov al, byte[rsi + r10]
-	test al, al
-	jz done
-
-	mov byte[rdi + rcx], al
-
-	inc rcx
+	xor r10, r10
+s2_loop:
+	cmp byte[rsi + r10], 0
+	je end
+	mov cl, [rsi + r10]
+	mov [rdi + r9], cl
+	inc r9
 	inc r10
-	jmp cat
+	jmp s2_loop
 
-done:
-	mov byte[rdi + rcx], 0
-	mov rax, rdi
+end:
+	mov byte[rdi + r9], 0
 	ret

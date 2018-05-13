@@ -155,12 +155,35 @@ void	test_tolower(void)
 	printf("**************************************************************\n");
 }
 
-int		main()
+void	test_strcat(void)
 {
-	short int	a;
 	char		dst[12] = "hello ";
+	char		*dst_after_cat;
 	char		src[6] = "world";
 
+	printf("************************ test_strcat *************************\n\n");
+	printf("src: %s\n", src);
+	printf("dst: %s\n", dst);
+	dst_after_cat = ft_strcat(dst, src);
+	printf("dst after strcat: %s\n", dst_after_cat);
+	printf("**************************************************************\n");
+}
+
+void	test_bzero(void)
+{
+	unsigned long	nb;
+
+	printf("************************ test_bzero **************************\n\n");
+	nb = 15549323115;
+	printf("nb before bzero: %ld\n", nb);
+	ft_bzero(&nb, sizeof(nb));
+	printf("nb after bzero: %ld\n", nb);
+	printf("**************************************************************\n");
+}
+	int		main()
+{
+	test_bzero();
+	test_strcat();
 	test_isalpha();
 	test_isdigit();
 	test_isalnum();
@@ -168,17 +191,5 @@ int		main()
 	test_isprint();
 	test_toupper();
 	test_tolower();
-	return 0;
-	printf("a before bzero: %d\n", a);
-	a = 55;
-	printf("a before bzero: %d\n", a);
-	ft_bzero(&a, sizeof(a));
-	printf("a after bzero: %d\n", a);
-
-	printf("src: %s\n", src);
-	printf("dst: %s\n", dst);
-	//strcat(dst, src);
-	ft_strcat(dst, src);
-	printf("dst after strcat: %s\n", dst);
 	return (0);
 }

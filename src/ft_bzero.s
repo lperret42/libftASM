@@ -3,18 +3,11 @@ global _ft_bzero
 section .text
 
 _ft_bzero:
-	cmp rdi, 0
-	jz end
-	mov rbx, rdi
-	mov rax, rsi
-
-bzero_loop:
-	cmp rax, 0
+	cmp rsi, 0
 	jle end
-	mov byte[rbx], 0
-	inc rbx
-	dec rax
-	jmp bzero_loop
+	dec rsi
+	mov byte[rdi + rsi], 0
+	jmp _ft_bzero
 
 end:
 	ret
