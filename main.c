@@ -109,6 +109,52 @@ void	test_isprint(void)
 	printf("**************************************************************\n");
 }
 
+void	test_toupper(void)
+{
+	int		i;
+	int		nb_tested;
+	int		to_upper;
+	int		c[12] = {'a', 'r', 'z', 'z' + 1, 'A' -1, 'A', 'J', 'Z', 'Z' + 1, 0,
+															-154653, 12563};
+
+	nb_tested = sizeof(c) / sizeof(*c);
+	printf("************************ test_toupper ************************\n\n");
+	i = 0;
+	while (i < nb_tested)
+	{
+		to_upper = ft_toupper(c[i]);
+		printf("c as integer: %d\n", c[i]);
+		printf("ft_toupper(c) as integer: %d\n", to_upper);
+		printf("c print as char: %c\n", c[i]);
+		printf("ft_toupper(c) print as char: %c\n\n", to_upper);
+		i++;
+	}
+	printf("**************************************************************\n");
+}
+
+void	test_tolower(void)
+{
+	int		i;
+	int		nb_tested;
+	int		to_upper;
+	int		c[12] = {'A', 'R', 'Z', 'Z' + 1, 'a' -1, 'a', 'j', 'z', 'z' + 1, 0,
+															-154653, 12563};
+
+	nb_tested = sizeof(c) / sizeof(*c);
+	printf("************************ test_tolower ************************\n\n");
+	i = 0;
+	while (i < nb_tested)
+	{
+		to_upper = ft_tolower(c[i]);
+		printf("c as integer: %d\n", c[i]);
+		printf("ft_tolower(c) as integer: %d\n", to_upper);
+		printf("c print as char: %c\n", c[i]);
+		printf("ft_tolower(c) print as char: %c\n\n", to_upper);
+		i++;
+	}
+	printf("**************************************************************\n");
+}
+
 int		main()
 {
 	short int	a;
@@ -120,6 +166,8 @@ int		main()
 	test_isalnum();
 	test_isascii();
 	test_isprint();
+	test_toupper();
+	test_tolower();
 	return 0;
 	printf("a before bzero: %d\n", a);
 	a = 55;
