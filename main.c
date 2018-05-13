@@ -4,6 +4,32 @@
 # include <unistd.h>
 # include "libfta.h"
 
+void	test_strcat(void)
+{
+	char		dst[12] = "hello ";
+	char		*dst_after_cat;
+	char		src[6] = "world";
+
+	printf("************************ test_strcat *************************\n\n");
+	printf("src: %s\n", src);
+	printf("dst: %s\n", dst);
+	dst_after_cat = ft_strcat(dst, src);
+	printf("dst after strcat: %s\n", dst_after_cat);
+	printf("**************************************************************\n");
+}
+
+void	test_bzero(void)
+{
+	unsigned long	nb;
+
+	printf("************************ test_bzero **************************\n\n");
+	nb = 15549323115;
+	printf("nb before bzero: %ld\n", nb);
+	ft_bzero(&nb, sizeof(nb));
+	printf("nb after bzero: %ld\n", nb);
+	printf("**************************************************************\n");
+}
+
 void	test_isalpha(void)
 {
 	int		i;
@@ -155,32 +181,16 @@ void	test_tolower(void)
 	printf("**************************************************************\n");
 }
 
-void	test_strcat(void)
+void	test_strlen(void)
 {
-	char		dst[12] = "hello ";
-	char		*dst_after_cat;
-	char		src[6] = "world";
+	char	str[6] = "hello";
 
-	printf("************************ test_strcat *************************\n\n");
-	printf("src: %s\n", src);
-	printf("dst: %s\n", dst);
-	dst_after_cat = ft_strcat(dst, src);
-	printf("dst after strcat: %s\n", dst_after_cat);
+	printf("************************ test_strlen ************************\n\n");
+	printf("%s: %ld\n", str, strlen(str));
 	printf("**************************************************************\n");
 }
 
-void	test_bzero(void)
-{
-	unsigned long	nb;
-
-	printf("************************ test_bzero **************************\n\n");
-	nb = 15549323115;
-	printf("nb before bzero: %ld\n", nb);
-	ft_bzero(&nb, sizeof(nb));
-	printf("nb after bzero: %ld\n", nb);
-	printf("**************************************************************\n");
-}
-	int		main()
+int		main()
 {
 	test_bzero();
 	test_strcat();
@@ -191,5 +201,6 @@ void	test_bzero(void)
 	test_isprint();
 	test_toupper();
 	test_tolower();
+	test_strlen();
 	return (0);
 }
