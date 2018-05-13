@@ -205,6 +205,7 @@ int		main()
 	test_toupper();
 	test_tolower();
 	test_strlen();
+	puts(NULL);
 	printf("n: %d", n);
 	return (0);
 }

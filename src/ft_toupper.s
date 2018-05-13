@@ -1,6 +1,5 @@
-global _ft_toupper
-
 section .text
+global _ft_toupper
 
 _ft_toupper:
 	mov rax, rdi

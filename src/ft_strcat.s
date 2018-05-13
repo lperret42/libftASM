@@ -1,8 +1,12 @@
+section .text
 global _ft_strcat
 
-section .text
-
 _ft_strcat:
+	push rdi
+	push rsi
+	push r8
+	push r9
+	push rcx
 	mov rax, rdi
 
 s1:
@@ -26,4 +30,9 @@ s2_loop:
 
 end:
 	mov byte[rdi + r9], 0
+	pop rcx
+	pop r9
+	pop r8
+	pop rsi
+	pop rdi
 	ret

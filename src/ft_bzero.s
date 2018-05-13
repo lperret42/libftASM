@@ -5,7 +5,7 @@ _ft_bzero:
 	push rsi
 	push rdi
 loop:
-	cmp sil, 0
+	cmp rsi, 0
 	jle end
 	dec rsi
 	mov byte[rdi + rsi], 0
