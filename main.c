@@ -1,5 +1,6 @@
 # include <ctype.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include "libfta.h"
@@ -240,6 +241,29 @@ void	test_memcpy(void)
 	printf("**************************************************************\n");
 }
 
+void	test_strdup(void)
+{
+	//char	*helloworld = "helloworld\n";
+	char	*helloworld = "hgneigkewlkrgjkl;fskdjf;lhrl;ejgfljrerghio;rgrel;jregjjerqjg'qegrjoeqjgtjh[o";
+	char	*s;
+
+	printf("************************ test_memcpy ************************\n\n");
+	printf("helloworld: %s\n", helloworld);
+	s = NULL;
+	printf("s before s = strdup(helloworld): %s\n", s);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	s = ft_strdup(helloworld);
+	//ft_strdup(helloworld);
+	printf("after strdup\n");
+	printf("s after s = strdup(helloworld): %s\n", s);
+	printf("**************************************************************\n");
+}
+
 int		main()
 {
 	int		var_main;
@@ -259,6 +283,7 @@ int		main()
 	test_strlen();
 	test_memset();
 	test_memcpy();
+	test_strdup();
 	printf("var_main: %d\n", var_main);
 	return (0);
 }
