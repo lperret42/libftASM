@@ -6,7 +6,7 @@
 /*   By: lperret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 11:44:41 by lperret           #+#    #+#             */
-/*   Updated: 2018/05/13 14:53:17 by lperret          ###   ########.fr       */
+/*   Updated: 2018/05/14 11:44:08 by lperret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		puts(const char *s);
+int		ft_puts(const char *s);
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);

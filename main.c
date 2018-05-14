@@ -192,9 +192,32 @@ void	test_strlen(void)
 	printf("**************************************************************\n");
 }
 
+void	test_puts(void)
+{
+	int		n;
+
+	printf("************************ test_puts **************************\n\n");
+	n = puts("I am puts");
+	printf("n from puts(I am puts): %d\n", n);
+	n = puts("42");
+	printf("n from puts(42): %d\n", n);
+	n = puts(NULL);
+	printf("n from puts(NULL): %d\n\n", n);
+	n = ft_puts("I am puts");
+	printf("n from ft_puts(I am puts): %d\n", n);
+	n = ft_puts("42");
+	printf("n from ft_puts(42): %d\n", n);
+	n = ft_puts(NULL);
+	printf("n from ft_puts(NULL): %d\n", n);
+	printf("EOF: %d\n", EOF);
+	printf("**************************************************************\n");
+}
+
 int		main()
 {
-	int		n = 3;
+	int		var_main;
+
+	var_main = 15263;
 	test_bzero();
 	test_strcat();
 	test_isalpha();
@@ -205,7 +228,7 @@ int		main()
 	test_toupper();
 	test_tolower();
 	test_strlen();
-	puts(NULL);
-	printf("n: %d", n);
+	test_puts();
+	printf("var_main: %d\n", var_main);
 	return (0);
 }
