@@ -213,6 +213,33 @@ void	test_puts(void)
 	printf("**************************************************************\n");
 }
 
+void	test_memset(void)
+{
+	int	n;
+
+	printf("************************ test_memset ************************\n\n");
+	n = 0;
+	printf("n before memset: %d\n", n);
+	ft_memset(&n, 1, sizeof(n));
+	printf("n after memset: %d\n", n);   // 257 ?
+	printf("**************************************************************\n");
+}
+
+void	test_memcpy(void)
+{
+	int		src;
+	int		dst;
+
+	printf("************************ test_memcpy ************************\n\n");
+	src = 123456789;
+	printf("src: %d\n", src);
+	dst = 0;
+	printf("dst before memcpy(dst, src, sizeof(dst)): %d\n", dst);
+	ft_memcpy(&dst, &src, sizeof(dst));
+	printf("dst after memcpy(dst, src, sizeof(dst)): %d\n", dst);
+	printf("**************************************************************\n");
+}
+
 int		main()
 {
 	int		var_main;
@@ -227,8 +254,11 @@ int		main()
 	test_isprint();
 	test_toupper();
 	test_tolower();
-	test_strlen();
 	test_puts();
+
+	test_strlen();
+	test_memset();
+	test_memcpy();
 	printf("var_main: %d\n", var_main);
 	return (0);
 }
