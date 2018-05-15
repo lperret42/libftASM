@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/30 12:40:40 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 16:34:54 by lperret          ###   ########.fr        #
+#    Created: 2018/05/15 16:52:13 by lperret           #+#    #+#              #
+#    Updated: 2018/05/15 17:26:28 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s
 	  ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s\
 	  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s\
 	  ft_cat.s\
-	  ft_strchr.s ft_strrchr.s ft_strcmp.s
+	  ft_strchr.s ft_strrchr.s ft_strcmp.s ft_strrev.s
 
 OBJ = $(addprefix $(OBJ_PATH),$(SRC:.s=.o))
 

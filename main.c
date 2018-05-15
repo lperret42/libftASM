@@ -327,6 +327,17 @@ void	test_strcmp(void)
 	printf("**************************************************************\n");
 }
 
+void	test_strrev(void)
+{
+	char	*s = "abc";
+
+	printf("************************ test_strrev ************************\n\n");
+	printf("test before strrev: %s\n", s);
+	s = ft_strrev(s);
+	printf("test after strrev: %s\n", s);
+	printf("**************************************************************\n");
+}
+
 int		main()
 {
 	test_bzero();
@@ -350,5 +361,6 @@ int		main()
 	test_strchr();
 	test_strrchr();
 	test_strcmp();
+	test_strrev();
 	return (0);
 }
