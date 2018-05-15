@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 13:59:31 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 14:24:26 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/15 14:37:44 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ global _ft_cat
 extern _ft_bzero
 
 _ft_cat:
+	push	rdi
+	push	rsi
+	push	rdx
 	mov		r12, rdi
 
 loop:
@@ -45,4 +48,7 @@ loop:
 	jmp		loop
 
 end:
+	pop	rdx
+	pop	rsi
+	pop	rdi
 	ret

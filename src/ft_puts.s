@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 14:11:49 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 14:11:52 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/15 14:56:54 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,12 @@ global _ft_puts
 extern _ft_strlen
 
 _ft_puts:
-	push	rbx
-	push	rsi
 	push	rdi
-	push	r8
+	push	rsi
+	push	rbx
 
 check:
-	mov		r8, rdi
+	mov		r12, rdi
 	cmp		rdi, 0
 	je		is_null
 	jne		is_not_null
@@ -41,16 +40,14 @@ write:
 	mov		rdi, STDOUT
 	mov		rax, MACH_SYSCALL(WRITE)
 	syscall
-	cmp		rax, -1
-	je		end
-	cmp		r8, 0
+	jc		end
+	cmp		r12, 0
 	je		ten
 	mov		rdx, 1
 	lea		rsi, [rel newline]
 	mov		rax, MACH_SYSCALL(WRITE)
 	syscall
-	cmp		rax, -1
-	je		end
+	jc		end
 	jmp		ten
 
 is_null:
@@ -68,8 +65,7 @@ ten:
 	mov		rax, 10
 
 end:
-	pop		r8
-	pop		rdi
-	pop		rsi
 	pop		rbx
+	pop		rsi
+	pop		rdi
 	ret

@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 14:07:34 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 14:07:38 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/15 14:51:28 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ global _ft_bzero
 
 _ft_bzero:
 	push	rsi
-	push	rdi
+
 loop:
 	cmp		rsi, 0
 	jle		end
@@ -24,6 +24,5 @@ loop:
 	jmp		loop
 
 end:
-	pop		rdi
 	pop		rsi
 	ret

@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 14:10:24 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 14:10:54 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/15 14:43:46 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,11 @@ loop:
 	push	rdi
 	push	rsi
 	push	rcx
-	push	r8
-	mov		r8, rdi
+	mov		r12, rdi
 	cld
 	mov		rcx, rdx
 	rep		movsb
-	mov		rax, r8
-	pop		r8
+	mov		rax, r12
 	pop		rcx
 	pop		rsi
 	pop		rdi

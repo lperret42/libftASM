@@ -265,8 +265,8 @@ void	test_cat(void)
 {
 	int		fd;
 	char	*file1 = "Makefile";
-	char	*file2 = "text/LeDormeurDuVal.txt";
-	char	*file3 = "text/LaMontagneEnFolie.txt";
+	char	*file2 = "src/ft_cat.s";
+	char	*file3 = "auteur";
 	
 	printf("************************ test_cat ***************************\n\n");
 	if ((fd = open(file1, O_RDONLY)) == -1)
@@ -282,6 +282,48 @@ void	test_cat(void)
 	ft_cat(fd);
 	ft_cat(-5542);
 	ft_cat(4553546);
+	printf("**************************************************************\n");
+}
+
+void	test_strchr(void)
+{
+	char	*ret;
+	
+	printf("************************ test_strchr ************************\n\n");
+	ret = ft_strchr("helloworld 42 42", '4');
+	printf("ret: %s\n", ret);
+	ret = strchr("helloworld 42 42", '4');
+	printf("ret: %s\n", ret);
+	printf("**************************************************************\n");
+}
+
+void	test_strrchr(void)
+{
+	char	*ret;
+	
+	printf("************************ test_strrchr ***********************\n\n");
+	ret = ft_strrchr("helloworld 42 42", '4');
+	printf("ret: %s\n", ret);
+	ret = strrchr("helloworld 42 42", '4');
+	printf("ret: %s\n", ret);
+	printf("**************************************************************\n");
+}
+
+void	test_strcmp(void)
+{
+	char	tmp[2];
+
+	printf("************************ test_strcmp ************************\n\n");
+	tmp[0] = (char)254;
+	tmp[1] = 0;
+	printf("%d\n", strcmp("", tmp));
+	printf("%d\n", ft_strcmp("", tmp));
+	printf("%d\n", strcmp("qekrhgoieg", "qekartghth"));
+	printf("%d\n", strcmp("qekrhgoieg", "qekartghth"));
+	printf("%d\n", strcmp("42", "42"));
+	printf("%d\n", ft_strcmp("42", "42"));
+	printf("%d\n", strcmp("429", "42"));
+	printf("%d\n", ft_strcmp("429", "42"));
 	printf("**************************************************************\n");
 }
 
@@ -304,5 +346,9 @@ int		main()
 	test_strdup();
 
 	test_cat();
+
+	test_strchr();
+	test_strrchr();
+	test_strcmp();
 	return (0);
 }
