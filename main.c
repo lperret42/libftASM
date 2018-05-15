@@ -3,6 +3,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include "libfta.h"
 
 void	test_strcat(void)
@@ -216,13 +217,18 @@ void	test_puts(void)
 
 void	test_memset(void)
 {
-	int	n;
+	int		n;
+	int		*n2;
+	char	*ret;
 
 	printf("************************ test_memset ************************\n\n");
 	n = 0;
 	printf("n before memset: %d\n", n);
-	ft_memset(&n, 1, sizeof(n));
-	printf("n after memset: %d\n", n);   // 257 ?
+	n2 = ft_memset(&n, 1, sizeof(n));
+	printf("n after memset: %d\n", n);
+	printf("n2 after memset: %d\n", *n2);
+	ret = ft_memset(0, 65, 0);
+	printf("ret: %s\n", ret);
 	printf("**************************************************************\n");
 }
 
@@ -235,40 +241,52 @@ void	test_memcpy(void)
 	src = 123456789;
 	printf("src: %d\n", src);
 	dst = 0;
-	printf("dst before memcpy(dst, src, sizeof(dst)): %d\n", dst);
+	printf("dst before memcpy: %d\n", dst);
 	ft_memcpy(&dst, &src, sizeof(dst));
-	printf("dst after memcpy(dst, src, sizeof(dst)): %d\n", dst);
+	printf("dst after memcpy: %d\n", dst);
 	printf("**************************************************************\n");
 }
 
 void	test_strdup(void)
 {
-	//char	*helloworld = "helloworld\n";
-	char	*helloworld = "hgneigkewlkrgjkl;fskdjf;lhrl;ejgfljrerghio;rgrel;jregjjerqjg'qegrjoeqjgtjh[o";
+	char	*helloworld = "Hello World!";
 	char	*s;
 
-	printf("************************ test_memcpy ************************\n\n");
+	printf("************************ test_strdup ************************\n\n");
 	printf("helloworld: %s\n", helloworld);
 	s = NULL;
-	printf("s before s = strdup(helloworld): %s\n", s);
+	printf("s before strdup: %s\n", s);
 	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	s = ft_strdup(helloworld);
-	//ft_strdup(helloworld);
-	printf("after strdup\n");
-	printf("s after s = strdup(helloworld): %s\n", s);
+	printf("s after strdup: %s\n", s);
+	printf("**************************************************************\n");
+}
+
+void	test_cat(void)
+{
+	int		fd;
+	char	*file1 = "Makefile";
+	char	*file2 = "text/LeDormeurDuVal.txt";
+	char	*file3 = "text/LaMontagneEnFolie.txt";
+	
+	printf("************************ test_cat ***************************\n\n");
+	if ((fd = open(file1, O_RDONLY)) == -1)
+		return ;
+	ft_cat(fd);
+	write(1, "\n", 1);
+	if ((fd = open(file2, O_RDONLY)) == -1)
+		return ;
+	ft_cat(fd);
+	write(1, "\n", 1);
+	if ((fd = open(file3, O_RDONLY)) == -1)
+		return ;
+	ft_cat(fd);
+	ft_cat(-5542);
+	ft_cat(4553546);
 	printf("**************************************************************\n");
 }
 
 int		main()
 {
-	int		var_main;
-
-	var_main = 15263;
 	test_bzero();
 	test_strcat();
 	test_isalpha();
@@ -284,6 +302,7 @@ int		main()
 	test_memset();
 	test_memcpy();
 	test_strdup();
-	printf("var_main: %d\n", var_main);
+
+	test_cat();
 	return (0);
 }

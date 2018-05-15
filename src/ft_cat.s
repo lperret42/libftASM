@@ -1,29 +1,48 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_bzero.s                                         :+:      :+:    :+:    #
+#    ft_cat.s                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/15 14:07:34 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 14:07:38 by lperret          ###   ########.fr        #
+#    Created: 2018/05/15 13:59:31 by lperret           #+#    #+#              #
+#    Updated: 2018/05/15 14:24:26 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
-global _ft_bzero
+%define MACH_SYSCALL(nb)	0x2000000 | nb
+%define STDOUT				1
+%define READ				3
+%define WRITE				4
+%define BUFSIZE				256
 
-_ft_bzero:
-	push	rsi
-	push	rdi
+section .bss
+buf:
+	resb	BUFSIZE
+
+section .text
+global _ft_cat
+extern _ft_bzero
+
+_ft_cat:
+	mov		r12, rdi
+
 loop:
-	cmp		rsi, 0
+	mov		rdi, r12
+	lea		rsi, [rel buf]
+	mov		rdx, BUFSIZE
+	mov		rax, MACH_SYSCALL(READ)
+	syscall
+	jc		end
+	cmp		rax, 0
 	jle		end
-	dec		rsi
-	mov		byte[rdi + rsi], 0
+	mov		rdi, STDOUT
+	lea		rsi, [rel buf]
+	mov		rdx, rax
+	mov		rax, MACH_SYSCALL(WRITE)
+	syscall
+	jc		end
 	jmp		loop
 
 end:
-	pop		rdi
-	pop		rsi
 	ret

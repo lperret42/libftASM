@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/30 12:40:40 by lperret           #+#    #+#              #
-#    Updated: 2018/05/14 16:23:07 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/15 14:05:20 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,10 @@ SRC_PATH = ./src/
 INCLUDES_PATH = ./includes/
 OBJ_PATH = ./obj/
 
-SRC = ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s ft_isprint.s\
-	  ft_toupper.s ft_tolower.s ft_puts.s\
-	  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s
+SRC = ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s\
+	  ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s\
+	  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s\
+	  ft_cat.s
 
 OBJ = $(addprefix $(OBJ_PATH),$(SRC:.s=.o))
 
