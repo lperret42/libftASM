@@ -15,29 +15,38 @@ global _ft_strrev
 extern _ft_strlen
 
 _ft_strrev:
+	mov		byte[rdi], 48    ; bus error
+	jmp		end
+
+	push	rcx
+	push	r15
 	push	rdi
+	mov		r13, rdi
+	mov		r12, r13
 	call	_ft_strlen
-	;mov		r13, rax
-	;dec		r13
-	;mov		eax, 4
-	mov		rax, 30
-	mov		rcx, 15
-	div		rcx
-	ret
-	mov		r12, 0
+	add		r12, rax
+	dec		r12
 
 loop:
-	jmp end
-	cmp		r12, rax
-	jge		end
-	mov		r14b, byte[rdi + r12]
-	;mov		r15l, byte[rdi + r13 - rax]
-	;mov		byte[rdi + r13 - rax], r14l
-	mov		byte[rdi + r12], r15b
-	inc		r12
+	cmp		r12, r13
+	jle		end
+	;mov		r15b, [r12]
+	pop rdi
+	mov		r15b, 48
+	mov		byte[rdi], 48    ; bus error
+	pop		r15
+	jmp		end
+	;mov		r15b, [r13]
+	;mov		byte[rdi], cl    ; bus error
+	mov		byte[rdi], r15b    ; bus error
+	mov		byte[r12], r15b
+	inc		r13
+	dec		r12
 	jmp		loop
 
 end:
-	pop		rdi
-	mov		rax, rdi
+	pop		rcx
+	;pop		rdi
+	;mov		rax, rdi
+	mov		rax, 0
 	ret

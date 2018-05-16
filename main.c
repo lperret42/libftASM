@@ -333,7 +333,11 @@ void	test_strrev(void)
 
 	printf("************************ test_strrev ************************\n\n");
 	printf("test before strrev: %s\n", s);
-	s = ft_strrev(s);
+	//s = ft_strrev(s);
+	printf("yooooooooo\n");
+	s[0] = 2;
+	printf("yo");
+	//ft_strrev(s);
 	printf("test after strrev: %s\n", s);
 	printf("**************************************************************\n");
 }
