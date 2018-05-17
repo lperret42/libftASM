@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 14:11:58 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 15:00:41 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/16 12:08:34 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ global _ft_strcat
 _ft_strcat:
 	push	rdi
 	push	rsi
+	push	rcx
 	mov		rax, rdi
 
 s1:
@@ -39,6 +40,7 @@ s2_loop:
 
 end:
 	mov		byte[rdi + r13], 0
+	pop		rcx
 	pop		rsi
 	pop		rdi
 	ret

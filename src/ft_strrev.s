@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 17:24:39 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 17:54:35 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/16 12:07:30 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,38 +15,32 @@ global _ft_strrev
 extern _ft_strlen
 
 _ft_strrev:
-	mov		byte[rdi], 48    ; bus error
-	jmp		end
-
-	push	rcx
-	push	r15
+	cmp		rdi, 0
+	je		error
 	push	rdi
-	mov		r13, rdi
-	mov		r12, r13
+	push	rcx
+	mov		r12, rdi
 	call	_ft_strlen
 	add		r12, rax
 	dec		r12
 
 loop:
-	cmp		r12, r13
+	cmp		r12, rdi
 	jle		end
-	;mov		r15b, [r12]
-	pop rdi
-	mov		r15b, 48
-	mov		byte[rdi], 48    ; bus error
-	pop		r15
-	jmp		end
-	;mov		r15b, [r13]
-	;mov		byte[rdi], cl    ; bus error
-	mov		byte[rdi], r15b    ; bus error
-	mov		byte[r12], r15b
-	inc		r13
+	mov		al, [rdi]
+	mov		cl, [r12]
+	mov		[rdi], cl
+	mov		[r12], al
+	inc		rdi
 	dec		r12
 	jmp		loop
 
+error:
+	mov		rax, 0
+	ret
+
 end:
 	pop		rcx
-	;pop		rdi
-	;mov		rax, rdi
-	mov		rax, 0
+	pop		rdi
+	mov		rax, rdi
 	ret

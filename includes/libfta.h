@@ -6,7 +6,7 @@
 /*   By: lperret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 11:44:41 by lperret           #+#    #+#             */
-/*   Updated: 2018/05/15 17:55:56 by lperret          ###   ########.fr       */
+/*   Updated: 2018/05/17 12:07:14 by lperret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strrev(char *s);
+void	*ft_memchr(const void *s, int c, size_t n);
 
 #endif

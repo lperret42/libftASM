@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 16:52:13 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 17:26:28 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/17 12:08:26 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s
 	  ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s\
 	  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s\
 	  ft_cat.s\
-	  ft_strchr.s ft_strrchr.s ft_strcmp.s ft_strrev.s
+	  ft_strchr.s ft_strrchr.s ft_strcmp.s ft_strrev.s ft_memchr.s
 
 OBJ = $(addprefix $(OBJ_PATH),$(SRC:.s=.o))
 
@@ -61,7 +61,7 @@ re: fclean all
 
 test: $(OBJ) main.c | silent
 	@$(CC) -I$(INCLUDES_PATH) main.c $(LIBS) -o $(NAME_TEST)
-	@echo "\033[32mLinking & indexing" [ $(NAME_TEST) ] "\033[0m"
+	@echo "\033[32mCreating executable" [ $(NAME_TEST) ] "\033[0m"
 
 clean_test:
 	@/bin/rm -f $(NAME_TEST)

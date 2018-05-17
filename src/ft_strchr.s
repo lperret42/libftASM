@@ -6,7 +6,7 @@
 #    By: lperret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 14:07:34 by lperret           #+#    #+#              #
-#    Updated: 2018/05/15 15:38:12 by lperret          ###   ########.fr        #
+#    Updated: 2018/05/16 12:55:30 by lperret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ global _ft_strchr
 
 _ft_strchr:
 	push	rdi
-	push	rsi
 
 loop:
 	cmp		byte[rdi], sil
@@ -34,6 +33,5 @@ not_founded:
 	jmp		end
 
 end:
-	pop		rsi
 	pop		rdi
 	ret
